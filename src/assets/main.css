@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-crimson: #7b1b29;
+  --color-crimson-dark: #5c121d;
+  --color-crimson-hover: #691522;
+  --color-espresso: #2a1115;
+  --color-warm: #f4f2ee;
+  --color-card-warm: #f8f6f2;
+  --color-cta-strip: #ece7df;
+  --color-utility: #f6f4f0;
+  --color-ink: #1f191a;
+  --color-ink-secondary: #5c5354;
+  --color-ink-muted: #857b7c;
+  --color-border-warm: #e5e0d8;
+
+  --font-sans: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-khmer: 'Moul', 'Kantumruy Pro', serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-ink bg-white leading-relaxed antialiased;
+  }
+}
+
+@layer components {
+  .container-layout {
+    @apply w-full md:w-[80vw] max-w-full md:max-w-[80vw] mx-auto px-6;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2.5 bg-crimson hover:bg-crimson-hover text-white text-[13px] font-medium px-5 py-2.5 rounded-[2px] transition-colors cursor-pointer;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2.5 bg-white border border-border-warm hover:border-crimson text-ink hover:text-crimson text-[12.5px] font-semibold px-4.5 py-2.5 rounded-[2px] transition-colors cursor-pointer;
+  }
+
+  .eyebrow {
+    @apply block text-[10px] font-bold tracking-[0.12em] text-crimson uppercase mb-1.5;
+  }
+
+  .section-title {
+    @apply font-serif text-[28px] font-semibold text-ink leading-tight;
+  }
+}
