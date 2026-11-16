@@ -315,7 +315,7 @@ const filteredAnnouncements = computed(() => {
           <button
             type="button"
             class="w-full py-2.75 px-4 bg-white hover:bg-[#F5F6F8] text-[#252525] hover:text-[#781D2B] border border-[#D1D5DB] hover:border-[#781D2B] text-[13.5px] font-semibold rounded-[4px] transition-colors flex items-center justify-between cursor-pointer"
-            @click="navigateTo('/results')"
+            @click="navigateTo('/examination-results')"
           >
             <span class="flex items-center gap-2.5">
               <svg

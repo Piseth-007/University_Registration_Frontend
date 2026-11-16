@@ -35,9 +35,9 @@ import { navigateTo } from '../../router'
 
       <nav aria-label="Dashboard Footer Navigation" class="flex flex-wrap items-center gap-5">
         <a
-          href="/contact#faq"
+          href="/help-support"
           class="hover:text-[#781D2B] hover:underline transition-colors"
-          @click.prevent="navigateTo('/contact')"
+          @click.prevent="navigateTo('/help-support')"
         >
           Help Center
         </a>

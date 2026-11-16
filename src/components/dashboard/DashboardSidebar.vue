@@ -46,6 +46,21 @@ function isItemHighlighted(itemId: DashboardNavId): boolean {
   if (itemId === 'my-application') {
     return isMyApplicationActive()
   }
+  if (itemId === 'examination' && path.value === '/examination') {
+    return true
+  }
+  if (itemId === 'results' && path.value === '/examination-results') {
+    return true
+  }
+  if (itemId === 'notifications' && path.value === '/notifications') {
+    return true
+  }
+  if (itemId === 'my-profile' && path.value === '/my-profile') {
+    return true
+  }
+  if (itemId === 'help-support' && path.value === '/help-support') {
+    return true
+  }
   return props.activeId === itemId
 }
 
@@ -57,10 +72,16 @@ function handleSelect(id: DashboardNavId) {
     navigateTo('/dashboard')
   } else if (id === 'my-application') {
     navigateTo('/my-application')
+  } else if (id === 'examination') {
+    navigateTo('/examination')
   } else if (id === 'results') {
-    navigateTo('/results')
+    navigateTo('/examination-results')
+  } else if (id === 'notifications') {
+    navigateTo('/notifications')
+  } else if (id === 'my-profile' || id === 'profile-settings') {
+    navigateTo('/my-profile')
   } else if (id === 'help-support') {
-    navigateTo('/contact')
+    navigateTo('/help-support')
   } else if (path.value !== '/dashboard') {
     navigateTo('/dashboard')
   }

@@ -540,6 +540,298 @@ export interface ReviewApplicationSummaryData {
   }
 }
 
+/* Student Portal Examination Page Interfaces */
+export type ExaminationPageState =
+  | 'Not Yet Scheduled'
+  | 'Scheduled'
+  | 'Completed'
+  | 'Cancelled'
+
+export interface ExaminationInstructionRule {
+  number: number
+  title: string
+  description: string
+}
+
+export interface ExaminationPageData {
+  // 2. Page Header
+  pageTitle: string
+  pageSubtitle: string
+
+  // 3. Examination Status Card
+  statusCard: {
+    eligibility: string
+    status: ExaminationPageState
+    examinationDate: string
+    examinationSession: string
+    examinationCenter: string
+  }
+
+  // 4. Examination Schedule Card
+  schedule: {
+    examinationName: string
+    date: string
+    startTime: string
+    endTime: string
+    examinationBuilding: string
+    roomNumber: string
+    seatNumber: string
+    examinationCenterAddress: string
+  }
+
+  // 5. Admission Card
+  admissionCard: {
+    studentName: string
+    studentNameKhmer: string
+    applicationReferenceNumber: string
+    examinationCenter: string
+    examinationDateAndTime: string
+    roomAndSeatNumber: string
+    degreeProgram: string
+    academicYear: string
+  }
+
+  // 6. Examination Instructions
+  instructions: ExaminationInstructionRule[]
+}
+
+/* Student Portal Examination Results Page Interfaces */
+export type AdmissionDecisionState = 'Accepted' | 'Pending' | 'Not Accepted'
+
+export type ExaminationResultsViewMode = AdmissionDecisionState | 'Empty'
+
+export interface ExaminationScoreRow {
+  id: string
+  subjectName: string
+  subjectNameKhmer: string
+  obtainedScore: number
+  maximumScore: number
+  grade: string
+}
+
+export interface ExaminationResultsPageData {
+  // 2. Page Header
+  pageTitle: string
+  pageSubtitle: string
+
+  // 3. Result Overview Card
+  overview: {
+    applicationReferenceNumber: string
+    examinationName: string
+    academicYear: string
+    resultPublicationDate: string
+    overallResultStatus: string
+  }
+
+  // 4. Examination Score Table
+  scores: ExaminationScoreRow[]
+  overallGradeLabel: string
+
+  // 5. Admission Decision Card
+  decision: {
+    state: AdmissionDecisionState
+    selectedFaculty: string
+    selectedMajor: string
+    acceptedHeading: string
+    acceptedMessage: string
+    acceptedNextSteps: string[]
+    pendingHeading: string
+    pendingMessage: string
+    notAcceptedHeading: string
+    notAcceptedMessage: string
+    contactOfficeName: string
+    contactEmail: string
+    contactPhone: string
+    contactLocation: string
+  }
+
+  // 6. Result Slip Preview
+  resultSlip: {
+    studentName: string
+    studentNameKhmer: string
+    applicationReferenceNumber: string
+    examinationDetails: string
+    officialResultLabel: string
+    publicationDate: string
+    authorizedSignatoryTitle: string
+    authorizedSignaturePlaceholder: string
+  }
+
+  // 7. Empty State
+  emptyState: {
+    heading: string
+    message: string
+    expectedWindowHint: string
+  }
+}
+
+/* Student Portal Notifications Page Interfaces */
+export type PortalNotificationCategory =
+  | 'Admission'
+  | 'Documents'
+  | 'Examination'
+  | 'Results'
+  | 'University Announcements'
+
+export type PortalNotificationFilterTab = 'All' | PortalNotificationCategory
+
+export interface PortalNotificationItem {
+  id: string
+  category: PortalNotificationCategory
+  title: string
+  shortDescription: string
+  fullMessage: string
+  dateTime: string
+  publicationDate: string
+  unread: boolean
+  relatedApplicationReference?: string
+  senderOffice: string
+  actionLabel: string
+  actionRoute: string
+}
+
+/* Student Portal My Profile & Settings Page Interfaces */
+export type ProfileInteractionState =
+  | 'default'
+  | 'edit-mode'
+  | 'restricted'
+  | 'validation-errors'
+  | 'password-modal'
+  | 'saved-success'
+
+export interface StudentProfilePageData {
+  // 3. Page Header
+  pageTitle: string
+  pageSubtitle: string
+
+  // 4. Profile Summary Card
+  summary: {
+    avatarInitials: string
+    fullName: string
+    studentId: string
+    emailAddress: string
+    phoneNumber: string
+    accountStatus: 'Active' | 'Pending Verification'
+  }
+
+  // 5. Personal Information (Identity Snapshot)
+  personalInfo: {
+    fullNameEnglish: string
+    fullNameKhmer: string
+    gender: string
+    dateOfBirth: string
+    nationality: string
+    isVerifiedIdentityLocked: boolean
+  }
+
+  // 6. Contact Information
+  contactInfo: {
+    emailAddress: string
+    phoneNumber: string
+    currentAddress: string
+    provinceCity: string
+    district: string
+    commune: string
+  }
+
+  // 8. Preferences
+  preferences: {
+    language: 'English' | 'Khmer'
+    emailNotifications: boolean
+    inAppNotifications: boolean
+  }
+}
+
+export interface ChangePasswordFormState {
+  currentPassword: string
+  newPassword: string
+  confirmNewPassword: string
+}
+
+/* Student Portal Help & Support Page Interfaces */
+export type HelpSupportInteractionState =
+  | 'default'
+  | 'faq-expanded'
+  | 'no-faq-results'
+  | 'form-errors'
+  | 'request-submitted'
+  | 'ticket-details'
+  | 'no-tickets'
+  | 'loading'
+
+export type HelpFaqCategory =
+  | 'Account & Login'
+  | 'Student Registration'
+  | 'Application Documents'
+  | 'Examination'
+  | 'Results & Admission'
+
+export type HelpFaqFilterTab = 'All' | HelpFaqCategory
+
+export interface HelpFaqItem {
+  id: string
+  category: HelpFaqCategory
+  question: string
+  answer: string
+  keywords: string[]
+}
+
+export interface HelpContactOfficeCard {
+  id: string
+  officeName: string
+  shortDescription: string
+  emailPlaceholder: string
+  phonePlaceholder: string
+  defaultSupportCategory: SupportTicketCategory
+}
+
+export type SupportTicketCategory =
+  | 'Account & Login'
+  | 'Application'
+  | 'Documents'
+  | 'Examination'
+  | 'Results'
+  | 'Technical Issue'
+  | 'Other'
+
+export type SupportTicketStatus = 'Open' | 'In Progress' | 'Resolved' | 'Closed'
+
+export interface SupportTicketMessage {
+  id: string
+  senderRole: 'Student' | 'Support Team'
+  senderName: string
+  timestamp: string
+  message: string
+}
+
+export interface SupportTicketItem {
+  id: string
+  ticketId: string
+  subject: string
+  category: SupportTicketCategory
+  submittedDate: string
+  status: SupportTicketStatus
+  studentReference: string
+  originalMessage: string
+  supportResponse: string
+  conversationHistory: SupportTicketMessage[]
+}
+
+export interface SupportRequestFormState {
+  fullName: string
+  studentIdOrReference: string
+  emailAddress: string
+  category: SupportTicketCategory | ''
+  subject: string
+  description: string
+  attachmentFileName: string
+}
+
+
+
+
+
+
 
 
 

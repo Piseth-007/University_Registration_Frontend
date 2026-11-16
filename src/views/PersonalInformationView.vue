@@ -99,8 +99,24 @@ function handleSidebarSelect(id: DashboardNavId) {
     navigateTo('/my-application')
     return
   }
+  if (id === 'examination') {
+    navigateTo('/examination')
+    return
+  }
   if (id === 'results') {
-    navigateTo('/results')
+    navigateTo('/examination-results')
+    return
+  }
+  if (id === 'notifications') {
+    navigateTo('/notifications')
+    return
+  }
+  if (id === 'my-profile' || id === 'profile-settings') {
+    navigateTo('/my-profile')
+    return
+  }
+  if (id === 'help-support') {
+    navigateTo('/help-support')
     return
   }
   activeSidebarId.value = id

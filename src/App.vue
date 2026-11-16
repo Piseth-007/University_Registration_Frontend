@@ -31,7 +31,12 @@ const isPortalLayout = computed(
     matchedRoute.value.path === '/academic-background' ||
     matchedRoute.value.path === '/faculty-major' ||
     matchedRoute.value.path === '/documents' ||
-    matchedRoute.value.path === '/review-submit',
+    matchedRoute.value.path === '/review-submit' ||
+    matchedRoute.value.path === '/examination' ||
+    matchedRoute.value.path === '/examination-results' ||
+    matchedRoute.value.path === '/notifications' ||
+    matchedRoute.value.path === '/my-profile' ||
+    matchedRoute.value.path === '/help-support',
 )
 
 function handleNavSelect(item: NavItem) {

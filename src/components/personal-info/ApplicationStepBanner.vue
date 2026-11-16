@@ -134,7 +134,6 @@ const emit = defineEmits<{
               }}
             </span>
           </div>
-
           <div>
             <p class="text-[13.5px] font-bold text-[#252525] leading-snug">
               {{ step.stepNumber }}. {{ step.title }}

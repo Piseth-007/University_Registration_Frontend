@@ -277,7 +277,7 @@ const profileDropdownOpen = ref(false)
             type="button"
             class="w-full px-3.5 py-2 text-left text-[12.5px] text-[#252525] hover:bg-[#F5F6F8] hover:text-[#781D2B] flex items-center gap-2 cursor-pointer"
             @click="
-              emit('select-nav', 'profile-settings');
+              navigateTo('/my-profile');
               profileDropdownOpen = false
             "
           >

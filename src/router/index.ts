@@ -8,8 +8,13 @@ import NewsView from '../views/NewsView.vue'
 import ContactView from '../views/ContactView.vue'
 import ApplyView from '../views/ApplyView.vue'
 import DocumentUploadView from '../views/DocumentUploadView.vue'
+import ExaminationResultsView from '../views/ExaminationResultsView.vue'
+import ExaminationView from '../views/ExaminationView.vue'
 import FacultyMajorView from '../views/FacultyMajorView.vue'
+import HelpSupportView from '../views/HelpSupportView.vue'
 import LoginView from '../views/LoginView.vue'
+import MyProfileView from '../views/MyProfileView.vue'
+import NotificationsView from '../views/NotificationsView.vue'
 import PersonalInformationView from '../views/PersonalInformationView.vue'
 import ResultsView from '../views/ResultsView.vue'
 import ReviewSubmitView from '../views/ReviewSubmitView.vue'
@@ -176,6 +181,41 @@ export const routes: RouteRecord[] = [
     name: 'review-submit',
     title: 'Review & Submit Application — University Registration System',
     component: ReviewSubmitView,
+    requiresAuth: true,
+  },
+  {
+    path: '/examination',
+    name: 'examination',
+    title: 'Entrance Examination — University Registration System',
+    component: ExaminationView,
+    requiresAuth: true,
+  },
+  {
+    path: '/examination-results',
+    name: 'examination-results',
+    title: 'Examination Results — University Registration System',
+    component: ExaminationResultsView,
+    requiresAuth: true,
+  },
+  {
+    path: '/notifications',
+    name: 'notifications',
+    title: 'Notifications — University Registration System',
+    component: NotificationsView,
+    requiresAuth: true,
+  },
+  {
+    path: '/my-profile',
+    name: 'my-profile',
+    title: 'My Profile & Settings — University Registration System',
+    component: MyProfileView,
+    requiresAuth: true,
+  },
+  {
+    path: '/help-support',
+    name: 'help-support',
+    title: 'Help & Support — University Registration System',
+    component: HelpSupportView,
     requiresAuth: true,
   },
   {
