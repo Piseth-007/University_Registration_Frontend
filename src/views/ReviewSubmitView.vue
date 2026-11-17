@@ -249,7 +249,7 @@ function handleSidebarSelect(id: DashboardNavId) {
           :submission-date="summaryData.overview.submissionDate"
           :selected-faculty="summaryData.facultyMajor.selectedFaculty"
           :selected-major="summaryData.facultyMajor.selectedMajor"
-          @view-application-status="navigateTo('/dashboard')"
+          @view-application-status="navigateTo('/application-status')"
           @return-dashboard="navigateTo('/dashboard')"
           @back-to-review="handleSelectDemoState('ready')"
         />

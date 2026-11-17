@@ -18,6 +18,7 @@ const { path } = useRoute()
 
 const applicationSubRoutes: Array<{ id: DashboardNavId; path: string; label: string }> = [
   { id: 'my-application', path: '/my-application', label: 'Application Hub & Overview' },
+  { id: 'application-status', path: '/application-status', label: 'Application Status Tracking' },
   { id: 'personal-info', path: '/personal-information', label: '1. Personal Information' },
   { id: 'academic-background', path: '/academic-background', label: '2. Academic Background' },
   { id: 'faculty-major', path: '/faculty-major', label: '3. Faculty & Major' },
@@ -28,12 +29,14 @@ const applicationSubRoutes: Array<{ id: DashboardNavId; path: string; label: str
 function isMyApplicationActive(): boolean {
   return (
     props.activeId === 'my-application' ||
+    props.activeId === 'application-status' ||
     props.activeId === 'personal-info' ||
     props.activeId === 'academic-background' ||
     props.activeId === 'faculty-major' ||
     props.activeId === 'documents' ||
     props.activeId === 'review-submit' ||
     path.value === '/my-application' ||
+    path.value === '/application-status' ||
     path.value === '/personal-information' ||
     path.value === '/academic-background' ||
     path.value === '/faculty-major' ||
@@ -361,6 +364,15 @@ function handleSelect(id: DashboardNavId) {
           APP-2027-0001
         </span>
       </div>
+
+      <button
+        type="button"
+        class="w-full mb-1.5 px-3 py-1.75 rounded-[4px] border border-[#D1D5DB] bg-white hover:border-[#781D2B] hover:text-[#781D2B] text-[#252525] text-[12px] font-semibold transition-colors cursor-pointer text-left flex items-center justify-between"
+        @click="navigateTo('/officer-dashboard')"
+      >
+        <span>Admission Officer Dashboard</span>
+        <span>→</span>
+      </button>
 
       <!-- 8. Logout -->
       <button

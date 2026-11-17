@@ -827,6 +827,426 @@ export interface SupportRequestFormState {
   attachmentFileName: string
 }
 
+/* Student Portal Application Status Tracking Page Interfaces */
+export type ApplicationTrackingScenario =
+  | 'Draft'
+  | 'Submitted'
+  | 'Under Review'
+  | 'Need Correction'
+  | 'Resubmitted'
+  | 'Approved'
+  | 'Rejected'
+
+export type ApplicationTimelineVisualState =
+  | 'Completed'
+  | 'In Progress'
+  | 'Pending'
+  | 'Need Correction'
+  | 'Approved'
+  | 'Rejected'
+
+export interface ApplicationTimelineStepItem {
+  stepNumber: number
+  title: string
+  description: string
+  statusLabel: string
+  visualState: ApplicationTimelineVisualState
+  dateNote?: string
+}
+
+export interface ApplicationHistoryLogItem {
+  id: string
+  dateTime: string
+  activity: string
+  updatedBy: string
+  description: string
+}
+
+export interface ApplicationStatusTrackingPageData {
+  // 3. Page Header
+  pageTitle: string
+  pageSubtitle: string
+
+  // 4. Application Summary Card
+  summary: {
+    applicationReference: string
+    applicantName: string
+    academicYear: string
+    selectedFaculty: string
+    selectedMajor: string
+    submissionDate: string
+    currentStatus: ApplicationTrackingScenario
+  }
+
+  // 5. Application Progress Timeline
+  timelineSteps: ApplicationTimelineStepItem[]
+
+  // 6. Officer Feedback & Required Corrections
+  officerFeedback: {
+    hasCorrectionRequest: boolean
+    feedbackMessage: string
+    correctionReason: string
+    requiredDocumentOrInfo: string
+    correctionDeadline: string
+    noFeedbackMessage: string
+    uploadedReplacementFileName: string
+  }
+
+  // 7. Application History
+  historyLogs: ApplicationHistoryLogItem[]
+}
+
+/* Admission Officer Staff Administration Dashboard Interfaces */
+export type OfficerNavId =
+  | 'dashboard'
+  | 'applications'
+  | 'document-verification'
+  | 'admission-decisions'
+  | 'student-directory'
+  | 'reports'
+  | 'notifications'
+  | 'my-profile'
+
+export type OfficerDashboardInteractionState =
+  | 'default'
+  | 'loading'
+  | 'empty-applications'
+  | 'no-pending-tasks'
+  | 'filtered-table'
+  | 'notification-dropdown'
+  | 'profile-dropdown'
+
+export interface OfficerSidebarItem {
+  id: OfficerNavId
+  label: string
+  badge?: string
+}
+
+export interface OfficerStatCardItem {
+  id: string
+  label: string
+  value: string
+  trendText: string
+  icon: 'total' | 'pending' | 'correction' | 'approved'
+  accentTone: 'burgundy' | 'amber' | 'orange' | 'green'
+}
+
+export interface OfficerStatusDistributionItem {
+  status: 'Draft' | 'Submitted' | 'Under Review' | 'Need Correction' | 'Approved' | 'Rejected'
+  count: number
+  percentage: number
+  colorHex: string
+}
+
+export interface OfficerMonthlySubmissionPoint {
+  month: string
+  count: number
+}
+
+export interface OfficerFacultyApplicantBar {
+  facultyName: string
+  shortName: string
+  applicants: number
+  maxScale: number
+}
+
+export type OfficerApplicationStatus =
+  | 'Submitted'
+  | 'Under Review'
+  | 'Need Correction'
+  | 'Approved'
+  | 'Rejected'
+
+export interface OfficerApplicationRecord {
+  id: string
+  applicationId: string
+  studentName: string
+  studentNameKhmer: string
+  faculty: string
+  major: string
+  submissionDate: string
+  submissionSortKey: string
+  status: OfficerApplicationStatus
+  maskedNationalId: string
+  bacIIGrade: string
+  assignedReviewer: string
+}
+
+export interface OfficerPendingTaskItem {
+  id: string
+  title: string
+  pendingCount: number
+  priority: 'Urgent' | 'High' | 'Medium'
+  targetModule: OfficerNavId
+}
+
+export interface OfficerActivityFeedItem {
+  id: string
+  activityType:
+    | 'Application reviewed'
+    | 'Document verified'
+    | 'Correction requested'
+    | 'Application approved'
+    | 'Application rejected'
+  description: string
+  dateTime: string
+  officerResponsible: string
+}
+
+export interface OfficerNotificationDropdownItem {
+  id: string
+  title: string
+  timestamp: string
+  unread: boolean
+}
+
+/* Admission Officer Application Management Page Interfaces */
+export type OfficerManagementInteractionState =
+  | 'default'
+  | 'search-filtered'
+  | 'bulk-selected'
+  | 'detail-drawer'
+  | 'no-results'
+  | 'loading'
+  | 'permission-denied'
+  | 'confirm-dialog'
+  | 'action-success'
+
+export type OfficerManagedAppStatus =
+  | 'Draft'
+  | 'Submitted'
+  | 'Under Review'
+  | 'Need Correction'
+  | 'Resubmitted'
+  | 'Approved'
+  | 'Rejected'
+
+export interface OfficerSubmittedDocItem {
+  id: string
+  documentName: string
+  fileType: 'PDF' | 'JPG' | 'PNG'
+  uploadDate: string
+  verificationStatus: 'Verified' | 'Pending Review' | 'Correction Needed'
+}
+
+export interface OfficerManagedApplicationRecord {
+  id: string
+  applicationId: string
+  studentName: string
+  studentNameKhmer: string
+  gender: 'Male' | 'Female'
+  dateOfBirth: string
+  email: string
+  phoneNumber: string
+  address: string
+  previousSchool: string
+  graduationYear: string
+  previousQualification: string
+  gpaOrGrade: string
+  academicYear: string
+  faculty: string
+  major: string
+  submissionDate: string
+  submissionSortKey: string
+  status: OfficerManagedAppStatus
+  assignedOfficer: string
+  submittedDocuments: OfficerSubmittedDocItem[]
+  applicationHistory: Array<{
+    dateTime: string
+    activity: string
+    actor: string
+  }>
+}
+
+/* Admission Officer Application Review Details Page Interfaces */
+export type OfficerReviewTabId =
+  | 'personal'
+  | 'academic'
+  | 'faculty-major'
+  | 'documents'
+  | 'summary'
+  | 'all'
+
+export type OfficerSectionReviewState =
+  | 'Verified'
+  | 'Needs Correction'
+  | 'Not Reviewed'
+
+export type OfficerDocumentVerifyState =
+  | 'Verified'
+  | 'Rejected'
+  | 'Needs Replacement'
+  | 'Pending Review'
+
+export type OfficerReviewInteractionState =
+  | 'initial'
+  | 'personal-verified'
+  | 'doc-rejected'
+  | 'doc-replacement'
+  | 'correction-modal'
+  | 'saved-success'
+  | 'confirm-dialog'
+  | 'completed-readonly'
+
+export interface OfficerReviewDocumentItem {
+  id: string
+  documentName: string
+  fileFormat: 'PDF' | 'JPG' | 'PNG'
+  fileSize: string
+  uploadDate: string
+  status: OfficerDocumentVerifyState
+  officerComment: string
+  required: boolean
+}
+
+export interface OfficerCorrectionRequestFormState {
+  category: 'Personal Information' | 'Academic Background' | 'Faculty & Major' | 'Documents'
+  selectedFieldOrDocument: string
+  issueExplanation: string
+  requiredCorrection: string
+  optionalDeadline: string
+}
+
+export interface OfficerApplicationReviewData {
+  applicationReference: string
+  currentStatus: 'Under Review' | 'Needs Correction' | 'Review Completed'
+  assignedOfficer: string
+
+  // 4. Applicant Overview
+  overview: {
+    fullName: string
+    fullNameKhmer: string
+    applicationId: string
+    emailAddress: string
+    phoneNumber: string
+    gender: string
+    dateOfBirth: string
+    submissionDate: string
+    academicYear: string
+  }
+
+  // 6. Personal Information Review
+  personalInfo: {
+    fullNameEnglish: string
+    fullNameKhmer: string
+    gender: string
+    dateOfBirth: string
+    nationality: string
+    emailAddress: string
+    phoneNumber: string
+    currentAddress: string
+    provinceCity: string
+    district: string
+    commune: string
+    identitySectionStatus: OfficerSectionReviewState
+    contactSectionStatus: OfficerSectionReviewState
+    officerComment: string
+  }
+
+  // 7. Academic Background Review
+  academicBackground: {
+    previousSchoolName: string
+    graduationYear: string
+    previousQualification: string
+    gpaOrGrade: string
+    certificateInfo: string
+    sectionStatus: OfficerSectionReviewState
+    reviewComment: string
+  }
+
+  // 8. Faculty & Major Review
+  facultyMajor: {
+    selectedFaculty: string
+    selectedMajor: string
+    academicYear: string
+    programRequirements: string
+    eligibilityInfo: string
+    isEligibleForNextStage: boolean
+    sectionStatus: OfficerSectionReviewState
+    reviewComment: string
+  }
+
+  // 9. Document Review Section
+  documents: OfficerReviewDocumentItem[]
+
+  // 10. Review Summary
+  internalReviewNotes: string
+  reviewCompletedDeclaration: boolean
+
+  // Audit Trail
+  auditTrail: Array<{
+    timestamp: string
+    action: string
+    officer: string
+  }>
+}
+
+/* Admission Officer Document Verification Management Page Interfaces */
+export type DocVerificationStatus = 'Pending' | 'Verified' | 'Rejected' | 'Needs Replacement'
+
+export type DocVerificationType =
+  | 'High School Certificate'
+  | 'National ID / Passport'
+  | 'Student Photograph'
+  | 'Birth Certificate'
+  | 'Other Supporting Documents'
+
+export type DocVerificationInteractionState =
+  | 'default'
+  | 'filtered'
+  | 'pending'
+  | 'verified'
+  | 'rejected'
+  | 'replacement'
+  | 'preview'
+  | 'confirm'
+  | 'success'
+  | 'empty'
+  | 'loading'
+
+export interface DocVerificationHistoryEntry {
+  id: string
+  action: string
+  previousStatus: DocVerificationStatus | '—'
+  newStatus: DocVerificationStatus
+  officerName: string
+  dateTime: string
+  comment: string
+}
+
+export interface DocVerificationRecord {
+  id: string
+  applicationId: string
+  studentName: string
+  faculty: string
+  documentType: DocVerificationType
+  documentName: string
+  fileName: string
+  fileType: 'PDF' | 'JPG' | 'PNG' | 'DOCX'
+  fileSize: string
+  pageCount: number
+  uploadDate: string
+  uploadSortKey: string
+  status: DocVerificationStatus
+  assignedOfficer: string
+  markedReviewed: boolean
+  studentVisibleFeedback: string
+  history: DocVerificationHistoryEntry[]
+}
+
+export interface DocVerificationDecisionForm {
+  decision: 'Verified' | 'Rejected' | 'Needs Replacement' | ''
+  internalComment: string
+  reason: string
+  requiredStudentAction: string
+  correctionDeadline: string
+  hasReviewedDocument: boolean
+}
+
+
+
+
+
 
 
 

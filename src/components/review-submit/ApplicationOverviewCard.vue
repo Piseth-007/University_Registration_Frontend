@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { navigateTo } from '../../router'
 import type { ReviewApplicationSummaryData } from '../../types/admissions'
 
 defineProps<{
@@ -153,9 +154,13 @@ const emit = defineEmits<{
           </h2>
         </div>
 
-        <span class="text-[11.5px] text-[#6B7280]">
-          Official University Admission Dossier Record
-        </span>
+        <button
+          type="button"
+          class="text-[12px] font-semibold text-[#781D2B] hover:underline cursor-pointer"
+          @click="navigateTo('/application-status')"
+        >
+          Track Application Status Timeline →
+        </button>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">

@@ -47,7 +47,7 @@ const emit = defineEmits<{
   >
     <div class="absolute inset-0 z-1">
       <img
-        src="/images/about/overview-walkway.png"
+        src="/images/about/overview-walkway.jpg"
         alt="University campus event"
         class="w-full h-full object-cover object-[center_40%] block"
       />

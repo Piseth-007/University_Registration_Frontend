@@ -53,7 +53,7 @@ defineProps<{
         <figure class="flex flex-col gap-2">
           <div class="rounded-[2px] overflow-hidden border border-border-warm">
             <img
-              src="/images/about/overview-walkway.png"
+              src="/images/about/overview-walkway.jpg"
               alt="Students walking along the campus walkway"
               class="w-full h-auto block"
             />

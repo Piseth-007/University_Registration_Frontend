@@ -3,6 +3,7 @@ import { scrollToSection } from '../utils/helpers'
 import HomeView from '../views/HomeView.vue'
 import AboutUniversityView from '../views/AboutUniversityView.vue'
 import AcademicBackgroundView from '../views/AcademicBackgroundView.vue'
+import ApplicationStatusView from '../views/ApplicationStatusView.vue'
 import ProgramsView from '../views/ProgramsView.vue'
 import NewsView from '../views/NewsView.vue'
 import ContactView from '../views/ContactView.vue'
@@ -15,6 +16,8 @@ import HelpSupportView from '../views/HelpSupportView.vue'
 import LoginView from '../views/LoginView.vue'
 import MyProfileView from '../views/MyProfileView.vue'
 import NotificationsView from '../views/NotificationsView.vue'
+import OfficerApplicationManagementView from '../views/OfficerApplicationManagementView.vue'
+import OfficerDashboardView from '../views/OfficerDashboardView.vue'
 import PersonalInformationView from '../views/PersonalInformationView.vue'
 import ResultsView from '../views/ResultsView.vue'
 import ReviewSubmitView from '../views/ReviewSubmitView.vue'
@@ -149,6 +152,13 @@ export const routes: RouteRecord[] = [
     requiresAuth: true,
   },
   {
+    path: '/application-status',
+    name: 'application-status',
+    title: 'Application Status Tracking — University Registration System',
+    component: ApplicationStatusView,
+    requiresAuth: true,
+  },
+  {
     path: '/personal-information',
     name: 'personal-information',
     title: 'Personal Information — University Registration System',
@@ -217,6 +227,18 @@ export const routes: RouteRecord[] = [
     title: 'Help & Support — University Registration System',
     component: HelpSupportView,
     requiresAuth: true,
+  },
+  {
+    path: '/officer-dashboard',
+    name: 'officer-dashboard',
+    title: 'Admission Officer Dashboard — University Registration System',
+    component: OfficerDashboardView,
+  },
+  {
+    path: '/officer-applications',
+    name: 'officer-applications',
+    title: 'Application Management — University Registration System',
+    component: OfficerApplicationManagementView,
   },
   {
     path: '/results',

@@ -27,6 +27,7 @@ const isPortalLayout = computed(
   () =>
     matchedRoute.value.path === '/dashboard' ||
     matchedRoute.value.path === '/my-application' ||
+    matchedRoute.value.path === '/application-status' ||
     matchedRoute.value.path === '/personal-information' ||
     matchedRoute.value.path === '/academic-background' ||
     matchedRoute.value.path === '/faculty-major' ||
@@ -36,7 +37,9 @@ const isPortalLayout = computed(
     matchedRoute.value.path === '/examination-results' ||
     matchedRoute.value.path === '/notifications' ||
     matchedRoute.value.path === '/my-profile' ||
-    matchedRoute.value.path === '/help-support',
+    matchedRoute.value.path === '/help-support' ||
+    matchedRoute.value.path === '/officer-dashboard' ||
+    matchedRoute.value.path === '/officer-applications',
 )
 
 function handleNavSelect(item: NavItem) {

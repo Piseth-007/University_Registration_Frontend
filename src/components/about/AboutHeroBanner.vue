@@ -24,7 +24,7 @@ import { navigateTo } from '../../router'
   >
     <div class="absolute inset-0 z-1">
       <img
-        src="/images/about/about-hero.png"
+        src="/images/about/about-hero.jpg"
         alt="Royal University of Phnom Penh Heritage Campus"
         class="w-full h-full object-cover object-center block"
       />
